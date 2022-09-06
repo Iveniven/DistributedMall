@@ -101,7 +101,7 @@ export default defineComponent({
     //查询品牌列表
     const handleQuery = (params: any) => {
       loading.value = true;
-      axios.get("http://localhost:8899/mall-manager/queryBrands", {
+      axios.get("http://localhost:8899/mall-manager/brand/queryBrands", {
         params: {
           page: params.page,
           size: params.size
@@ -116,7 +116,7 @@ export default defineComponent({
     };
     //新增或修改请求
     const updateOrInsert = (params: any) => {
-      axios.post("http://localhost:8899/mall-manager/updateOrInsert", params).then((response) => {
+      axios.post("http://localhost:8899/mall-manager/brand/updateOrInsert", params).then((response) => {
         if (response.data.code === 200) {
           message.success(response.data.msg);
           handleQuery({
@@ -137,7 +137,7 @@ export default defineComponent({
     };
 
     const deleteBrand = (id:number) => {
-      axios.delete("http://localhost:8899/mall-manager/deleteBrand/" + id).then((response) => {
+      axios.delete("http://localhost:8899/mall-manager/brand/deleteBrand/" + id).then((response) => {
         if (response.data.code === 200) {
           message.success(response.data.msg);
           handleQuery({

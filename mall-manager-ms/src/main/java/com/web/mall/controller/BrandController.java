@@ -1,5 +1,6 @@
 package com.web.mall.controller;
 
+
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.web.mall.pojo.PageReq;
@@ -11,7 +12,6 @@ import com.web.mall.service.BrandService;
 import net.sourceforge.pinyin4j.PinyinHelper;
 import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType;
 import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;
-import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.*;
  * @date 2022/9/5 16:55
  */
 @RestController
+@RequestMapping("/brand")
 public class BrandController {
 
     @Autowired
@@ -72,9 +73,5 @@ public class BrandController {
         } catch (Exception e) {
             return String.valueOf(str.charAt(0)).toUpperCase();
         }
-    }
-
-    public void test(){
-        System.out.println("111");
     }
 }

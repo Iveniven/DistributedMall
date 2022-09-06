@@ -13,8 +13,8 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 @SpringBootApplication
 @MapperScan("com.web.mall.mapper")
 @EnableEurekaClient
-public class BrandApp {
+public class ManagerApp {
     public static void main(String[] args) {
-        SpringApplication.run(BrandApp.class, args);
+        SpringApplication.run(ManagerApp.class, args);
     }
 }
