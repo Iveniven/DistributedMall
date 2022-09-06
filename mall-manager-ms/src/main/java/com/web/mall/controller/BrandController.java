@@ -73,4 +73,8 @@ public class BrandController {
             return String.valueOf(str.charAt(0)).toUpperCase();
         }
     }
+
+    public void test(){
+        System.out.println("111");
+    }
 }

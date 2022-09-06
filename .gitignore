@@ -1,0 +1,6 @@
+# Project exclude paths
+/mall-eureka/target/
+/mall-manager-ms/target/
+/mall-mapper/target/
+/mall-pojo/target/
+/mall-zuul/target/
