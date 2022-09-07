@@ -58,23 +58,29 @@ public class SpecificationServiceImpl implements SpecificationService {
     @Override
     public int updateOrInsert(Specification specification) {
         //新建
-        if(specification.getTbSpecification().getId()==null || specification.getTbSpecification().getId()==0){
+        if (specification.getTbSpecification().getId() == null || specification.getTbSpecification().getId() == 0) {
             tbSpecificationMapper.insert(specification.getTbSpecification());
-            for (TbSpecificationOption t:specification.getTbSpecificationOptions()) {
+            for (TbSpecificationOption t : specification.getTbSpecificationOptions()) {
                 t.setSpecId(specification.getTbSpecification().getId());
                 tbSpecificationOptionMapper.insert(t);
             }
         }
         //更新
-        else{
+        else {
             tbSpecificationMapper.updateByPrimaryKey(specification.getTbSpecification());
             TbSpecificationOptionExample example = new TbSpecificationOptionExample();
             TbSpecificationOptionExample.Criteria criteria = example.createCriteria();
-            criteria.andSpecIdEqualTo(specification.getTbSpecification().getId());
-            tbSpecificationOptionMapper.deleteByExample(example);
-            for (TbSpecificationOption t:specification.getTbSpecificationOptions()) {
-                t.setSpecId(specification.getTbSpecification().getId());
-                tbSpecificationOptionMapper.insert(t);
+            criteria.andIdIn(specification.getIds());
+            if(specification.getIds().size()>0){
+                tbSpecificationOptionMapper.deleteByExample(example);
+            }
+            for (TbSpecificationOption t : specification.getTbSpecificationOptions()) {
+                if (t.getId() == null || t.getId().equals(0)) {
+                    t.setSpecId(specification.getTbSpecification().getId());
+                    tbSpecificationOptionMapper.insert(t);
+                } else {
+                    tbSpecificationOptionMapper.updateByPrimaryKey(t);
+                }
             }
         }
 

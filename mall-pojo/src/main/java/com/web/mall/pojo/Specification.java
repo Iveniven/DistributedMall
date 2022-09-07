@@ -18,6 +18,16 @@ public class Specification implements Serializable {
 
     private List<TbSpecificationOption> tbSpecificationOptions;
 
+    private List<Long> ids;
+
+    public List<Long> getIds() {
+        return ids;
+    }
+
+    public void setIds(List<Long> ids) {
+        this.ids = ids;
+    }
+
     public TbSpecification getTbSpecification() {
         return tbSpecification;
     }
@@ -32,5 +42,14 @@ public class Specification implements Serializable {
 
     public void setTbSpecificationOptions(List<TbSpecificationOption> tbSpecificationOptions) {
         this.tbSpecificationOptions = tbSpecificationOptions;
+    }
+
+    @Override
+    public String toString() {
+        return "Specification{" +
+                "tbSpecification=" + tbSpecification +
+                ", tbSpecificationOptions=" + tbSpecificationOptions +
+                ", ids=" + ids +
+                '}';
     }
 }

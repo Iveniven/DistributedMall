@@ -22,7 +22,7 @@
     </template>
   </a-table>
 
-  <a-modal v-model:visible="visible" width="1000px" title="Basic Modal" @ok="handleOk(specification)">
+  <a-modal v-model:visible="visible" width="1000px" title="Basic Modal" @ok="handleOk(specification)" @cancel="cancelModal">
     <a-form
         :model="specification"
         name="basic"
@@ -74,8 +74,8 @@
           <template v-slot:orders="{text,record}">
             <a-input v-model:value="record.orders"/>
           </template>
-          <template v-slot:author="{text,record,index,currentPageData}">
-            <a-button type="danger" @click="delTr(index,currentPageData)">删除</a-button>
+          <template v-slot:author="{text,record,index}">
+            <a-button type="danger" @click="delTr(index,record.id)">删除</a-button>
           </template>
         </a-table>
       </a-form-item>
@@ -90,7 +90,7 @@ import {message} from "ant-design-vue";
 
 export default defineComponent({
   name: 'AdminSpecification',
-  setup() {
+  setup: function () {
     // 模态框开关
     const visible = ref<boolean>(false);
     //规格列表
@@ -101,7 +101,8 @@ export default defineComponent({
       tbSpecificationOptions: [{
         optionName: '',
         orders: ''
-      }]
+      }],
+      ids:[]
     });
     //加载动画
     const loading = ref(false);
@@ -158,12 +159,25 @@ export default defineComponent({
     const pageNum = ref({
       num: 0
     });
-    // 新增栏
+    //删除的对象id列表
+    const deleteIds = ref({
+      ids:[]
+    })
+    //退出模态框清除ids
+    const cancelModal = () =>{
+      deleteIds.value.ids = []
+      console.log(deleteIds.value.ids)
+    }
+    //新增栏
     const addTr = () => {
       specification.value.tbSpecificationOptions.push({});
     }
     //删除栏
-    const delTr = (index: any) => {
+    const delTr = (index: number, id: never) => {
+      if(id!=undefined){
+        deleteIds.value.ids.push(id);
+      }
+      console.log(deleteIds.value.ids);
       index = pageNum.value.num + index;
       specification.value.tbSpecificationOptions.splice(index, 1);
     }
@@ -188,6 +202,7 @@ export default defineComponent({
     };
     // 模态框-确认
     const handleOk = (params: any) => {
+      params.ids = deleteIds.value.ids;
       updateOrInsert(params);
       visible.value = false;
     };
@@ -228,7 +243,7 @@ export default defineComponent({
         size: pagination.pageSize
       });
     };
-
+    //删除
     const deleteSpecification = (id: number) => {
       axios.delete("http://localhost:8899/mall-manager/specification/deleteSpec/" + id).then((response) => {
         if (response.data.code === 200) {
@@ -261,6 +276,7 @@ export default defineComponent({
       loading,
       specification,
       columnsList,
+      deleteIds,
       handleQuery,
       showModal,
       handleOk,
@@ -269,9 +285,9 @@ export default defineComponent({
       addSpecification,
       addTr,
       delTr,
-      ggg
-      // updateOrInsert,
-      // deleteBrand,
+      ggg,
+      updateOrInsert,
+      cancelModal,
     };
   },
 });

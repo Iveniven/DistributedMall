@@ -47,7 +47,6 @@ public class SpecificationController {
     //新增或者更新
     @PostMapping("/updateOrInsert")
     public ResultBean updateOrInsert(@RequestBody Specification specification){
-        System.out.println(specification);
         specificationService.updateOrInsert(specification);
         return ResultBean.ok();
     }
