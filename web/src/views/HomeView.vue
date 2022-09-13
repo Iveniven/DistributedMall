@@ -1,7 +1,10 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+<!--  <div class="home">-->
+<!--    <img alt="Vue logo" src="../assets/logo.png">-->
+<!--    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>-->
+<!--  </div>-->
+  <div>
+    首页
   </div>
 </template>
 

@@ -1,6 +1,7 @@
 package com.web.mall.pojo;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class TbTypeTemplate extends PageReq implements Serializable {
     private Long id;
@@ -33,7 +34,37 @@ public class TbTypeTemplate extends PageReq implements Serializable {
      */
     private String customAttributeItems;
 
+//    private List<TbBrand> tbBrands;
+//
+//    private List<TbSpecification> tbSpecifications;
+//
+//    private List<String> attributeItems;
+
     private static final long serialVersionUID = 1L;
+
+//    public List<String> getAttributeItems() {
+//        return attributeItems;
+//    }
+//
+//    public void setAttributeItems(List<String> attributeItems) {
+//        this.attributeItems = attributeItems;
+//    }
+//
+//    public List<TbBrand> getTbBrands() {
+//        return tbBrands;
+//    }
+//
+//    public void setTbBrands(List<TbBrand> tbBrands) {
+//        this.tbBrands = tbBrands;
+//    }
+//
+//    public List<TbSpecification> getTbSpecifications() {
+//        return tbSpecifications;
+//    }
+//
+//    public void setTbSpecifications(List<TbSpecification> tbSpecifications) {
+//        this.tbSpecifications = tbSpecifications;
+//    }
 
     public Long getId() {
         return id;
@@ -77,17 +108,12 @@ public class TbTypeTemplate extends PageReq implements Serializable {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", name=").append(name);
-        sb.append(", specIds=").append(specIds);
-        sb.append(", brandIds=").append(brandIds);
-        sb.append(", customAttributeItems=").append(customAttributeItems);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+        return "TbTypeTemplate{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", specIds='" + specIds + '\'' +
+                ", brandIds='" + brandIds + '\'' +
+                ", customAttributeItems='" + customAttributeItems + '\'' +
+                '}';
     }
 }

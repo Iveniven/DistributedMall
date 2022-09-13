@@ -10,4 +10,8 @@ public interface BrandService {
     public int updateOrInsert(TbBrand tbBrand);
 
     public int deleteBrand(Long id);
+
+    public TbBrand selectById(Long id);
+
+    public List<TbBrand> selectOtherBrands(List<Long> ids);
 }

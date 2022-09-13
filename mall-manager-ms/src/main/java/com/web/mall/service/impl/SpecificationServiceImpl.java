@@ -86,4 +86,17 @@ public class SpecificationServiceImpl implements SpecificationService {
 
         return 0;
     }
+
+    @Override
+    public TbSpecification selectById(Long id) {
+        return tbSpecificationMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public List<TbSpecification> selectOtherBrands(List<Long> ids) {
+        TbSpecificationExample example = new TbSpecificationExample();
+        TbSpecificationExample.Criteria criteria = example.createCriteria();
+        criteria.andIdNotIn(ids);
+        return tbSpecificationMapper.selectByExample(example);
+    }
 }

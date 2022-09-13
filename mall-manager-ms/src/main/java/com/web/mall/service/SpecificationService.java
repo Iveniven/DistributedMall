@@ -20,4 +20,8 @@ public interface SpecificationService {
 
     public int updateOrInsert(Specification specification);
 
+    public TbSpecification selectById(Long id);
+
+    public List<TbSpecification> selectOtherBrands(List<Long> ids);
+
 }

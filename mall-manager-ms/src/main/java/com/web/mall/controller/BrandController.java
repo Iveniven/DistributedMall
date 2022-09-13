@@ -38,6 +38,11 @@ public class BrandController {
         return ResultBean.ok(resp);
     }
 
+    @GetMapping("/queryBrandList")
+    public ResultBean queryBrqueryBrandListands() {
+        return ResultBean.ok(brandService.queryBrands());
+    }
+
     //更新或者新建品牌
     @PostMapping("/updateOrInsert")
     public ResultBean updateOrInsert(@RequestBody TbBrand tbBrand) {

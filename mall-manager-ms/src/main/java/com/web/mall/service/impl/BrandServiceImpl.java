@@ -2,6 +2,7 @@ package com.web.mall.service.impl;
 
 import com.web.mall.mapper.TbBrandMapper;
 import com.web.mall.pojo.TbBrand;
+import com.web.mall.pojo.TbBrandExample;
 import com.web.mall.service.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,5 +40,18 @@ public class BrandServiceImpl implements BrandService {
     @Override
     public int deleteBrand(Long id) {
         return tbBrandMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public TbBrand selectById(Long id) {
+        return tbBrandMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public List<TbBrand> selectOtherBrands(List<Long> ids) {
+        TbBrandExample example = new TbBrandExample();
+        TbBrandExample.Criteria criteria = example.createCriteria();
+        criteria.andIdNotIn(ids);
+        return tbBrandMapper.selectByExample(example);
     }
 }

@@ -1,6 +1,6 @@
 <template>
     <a-layout-footer style="text-align: center">
-        Distributed Mall ©2018 Created by Ant UED
+        Distributed Mall ©2022 Created by iven
     </a-layout-footer>
 </template>
 

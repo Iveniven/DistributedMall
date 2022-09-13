@@ -9,7 +9,7 @@
            :loading="loading"
            @change="handleTableChange">
     <template v-slot:action="{text,record}">
-
+      <a-space wrap>
       <a-button type="primary" @click="showModal(record)">编辑</a-button>
       <a-popconfirm
           title="确认要删除吗?"
@@ -19,6 +19,7 @@
       >
         <a-button type="danger">删除</a-button>
       </a-popconfirm>
+      </a-space>
     </template>
   </a-table>
   <a-modal v-model:visible="visible" title="Basic Modal" @ok="handleOk(brand)">

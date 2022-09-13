@@ -9,7 +9,7 @@
            :loading="loading"
            @change="handleTableChange">
     <template v-slot:action="{text,record}">
-
+      <a-space wrap>
       <a-button type="primary" @click="showModal(record)">编辑</a-button>
       <a-popconfirm
           title="确认要删除吗?"
@@ -19,6 +19,7 @@
       >
         <a-button type="danger">删除</a-button>
       </a-popconfirm>
+      </a-space>
     </template>
   </a-table>
 
@@ -75,7 +76,7 @@
             <a-input v-model:value="record.orders"/>
           </template>
           <template v-slot:author="{text,record,index}">
-            <a-button type="danger" @click="delTr(index,record.id)">删除</a-button>
+           <a-button type="danger" @click="delTr(index,record.id)">删除</a-button>
           </template>
         </a-table>
       </a-form-item>

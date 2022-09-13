@@ -29,6 +29,12 @@ public class SpecificationController {
         resp.setTotal(page.getTotal());
         return ResultBean.ok(resp);
     }
+    //查询规格列表
+    @GetMapping("/queryAllSpecList")
+    public ResultBean queryAllSpecList() {
+        return ResultBean.ok(specificationService.queryAllSpec());
+    }
+
 
 
     //查询规格组合对象

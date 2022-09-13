@@ -31,7 +31,17 @@ public class TbItemCat extends PageReq implements Serializable {
      */
     private Long typeId;
 
+    private TbTypeTemplate tbTypeTemplate;
+
     private static final long serialVersionUID = 1L;
+
+    public TbTypeTemplate getTbTypeTemplate() {
+        return tbTypeTemplate;
+    }
+
+    public void setTbTypeTemplate(TbTypeTemplate tbTypeTemplate) {
+        this.tbTypeTemplate = tbTypeTemplate;
+    }
 
     public Long getId() {
         return id;
